@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California HCD Legal Advisor</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        input, button { margin: 10px; padding: 10px; width: 80%; }
+        #response { margin-top: 20px; padding: 10px; border: 1px solid #ccc; text-align: left; background: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <h2>California HCD Legal Advisor</h2>
+    <p>Ask a question about California HCD regulations:</p>
+    
+    <input type="text" id="userQuery" placeholder="Enter your question">
+    <button onclick="askGPT()">Get Answer</button>
+    
+    <div id="response">Response will appear here...</div>
+
+    <script>
+        async function askGPT() {
+            const apiKey = "YOUR_NEW_OPENAI_API_KEY";  // 🔴 Replace this with your new OpenAI API key
+            const query = document.getElementById("userQuery").value;
+            const responseDiv = document.getElementById("response");
+
+            if (!query) {
+                responseDiv.innerHTML = "Please enter a question.";
+                return;
+            }
+
+            responseDiv.innerHTML = "Fetching response... Please wait.";
+            
+            try {
+                const res = await fetch("https://api.openai.com/v1/chat/completions", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: "gpt-4",
+                        messages: [
+                            { role: "system", content: "You are a legal assistant for California HCD regulations. Provide concise and factual answers based on relevant legal sources." },
+                            { role: "user", content: query }
+                        ],
+                        max_tokens: 500
+                    })
+                });
+
+                const data = await res.json();
+
+                if (data.choices && data.choices.length > 0) {
+                    responseDiv.innerHTML = data.choices[0].message.content;
+                } else {
+                    responseDiv.innerHTML = "No response from AI. Please try again.";
+                }
+
+            } catch (error) {
+                responseDiv.innerHTML = "Error fetching response. Please check API key or try again later.";
+            }
+        }
+    </script>
+
+</body>
+</html>
