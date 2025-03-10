@@ -22,7 +22,7 @@
 
     <script>
         async function askGPT() {
-            const apiKey = "RKIjg0_pBJ8r01NT0mi47RldoJogKZ1sY-IXy6145UZ7U7tJ9whW6kTbVf2LT92h6zzF7ifmw-T3BlbkFJNxK-0tt7dNv1ks-a2DhsIA3-RhgDMaTnqNDkji0AanoWE9tCRHdZEi0MRfjpow6wCbAatzyQMA";  // 🔴 Replace this with your new OpenAI API key
+            const apiKey = "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";  // 🔴 Replace this with your new OpenAI API key
             const query = document.getElementById("userQuery").value;
             const responseDiv = document.getElementById("response");
 
@@ -34,7 +34,7 @@
             responseDiv.innerHTML = "Fetching response... Please wait.";
             
             try {
-                const res = await fetch("https://api.openai.com/v1/completions", {
+                const res = await fetch("https://api.openai.com/v1/chat/completions", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
