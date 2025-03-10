@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>California HCD Legal Advisor</title>
+    <title>Artificial Intelligence Legal Advisor</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
         input, button { margin: 10px; padding: 10px; width: 80%; }
@@ -12,17 +12,17 @@
 </head>
 <body>
 
-    <h2>California HCD Legal Advisor</h2>
-    <p>Ask a question about California HCD regulations:</p>
+    <h2>Artificial Intelligence Legal Advisor</h2>
+    <p>Ask a question about California or Federal regulations:</p>
     
     <input type="text" id="userQuery" placeholder="Enter your question">
     <button onclick="askGPT()">Get Answer</button>
     
-    <div id="response">Response will appear here...</div>
+    <div id="response">Response will appear here... Please double check before you send to external parties</div>
 
     <script>
         async function askGPT() {
-            const apiKey = "YOUR_NEW_OPENAI_API_KEY";  // 🔴 Replace this with your new OpenAI API key
+            const apiKey = "RKIjg0_pBJ8r01NT0mi47RldoJogKZ1sY-IXy6145UZ7U7tJ9whW6kTbVf2LT92h6zzF7ifmw-T3BlbkFJNxK-0tt7dNv1ks-a2DhsIA3-RhgDMaTnqNDkji0AanoWE9tCRHdZEi0MRfjpow6wCbAatzyQMA";  // 🔴 Replace this with your new OpenAI API key
             const query = document.getElementById("userQuery").value;
             const responseDiv = document.getElementById("response");
 
